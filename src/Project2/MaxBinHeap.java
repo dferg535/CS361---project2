@@ -92,11 +92,23 @@ public class MaxBinHeap {
     
     @Override
     public String toString() {
-        StringBuilder heapString = new StringBuilder();
+        
+        // Array string builder:
+        StringBuilder array = new StringBuilder("Array representation (item " +
+                "ID's):\n[");
+        for (Item item: maxHeap) {
+            array.append(item.ID + ", ");
+        }
+        array.delete(array.length() - 2, array.length());
+        array.append("]\n\n");
+        
+        StringBuilder heapString = new StringBuilder(array);
         for (Item item : maxHeap) {
             heapString.append(item + "\n");
         }
+        
         return heapString.toString();
+        
     }
     
     

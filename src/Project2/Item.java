@@ -24,7 +24,8 @@ public class Item {
         StringBuilder itemString = new StringBuilder("[");
         itemString.append("ID: " + ID + ", (");
         itemString.append("w=" + weight + ", ");
-        itemString.append("v=" + value + "] ");
+        itemString.append("v=" + value + ", ");
+        itemString.append("priority = " + priorityFactor + "]");
         return itemString.toString();
     }
 }
