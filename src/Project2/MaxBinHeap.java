@@ -4,43 +4,45 @@ import java.util.ArrayList;
 import java.util.Collections;
 
 public class MaxBinHeap {
-
-    public MaxBinHeap(Item[] array) {
-        ArrayList<Item> newArray = new ArrayList<>();
+    
+    ArrayList<Item> maxHeap;
+    
+    public MaxBinHeap(ArrayList<Item> itemList) {
+        maxHeap = new ArrayList<>();
+        for (Item item : itemList) {
+            addToHeap(item, maxHeap);
+        }
     }
 
-    public ArrayList<Item> addToHeap(Item newItem, ArrayList<Item> array) {
-
-        //Keep track of position that item was replaced at
-
-        array.add(newItem);
-        int ArraySpot = array.indexOf(newItem);
-
-        //System.out.println("");
-
-        //Compare to parent
-        System.out.println("I got here");
-        System.out.println("Array Spot: " + ArraySpot);
-
-        int ParentSpot = (ArraySpot - 1) / 2;
-        System.out.println("ParentSpot is " + ParentSpot);
-
-        while(ParentSpot > 0) {
-            Item parentNode = array.get(ParentSpot);
-
-            //If the Parent node is less than the Child, we need to swap for max binary heap
-            if(parentNode.priorityFactor < newItem.priorityFactor) {
-                //array[ParentSpot] = newItem;
-                Collections.swap(array, ParentSpot, ArraySpot);
-                //array[ArraySpot] = parentNode;
-                System.out.println("ParentSpot is " + ParentSpot);
+    public ArrayList<Item> addToHeap(Item newItem, ArrayList<Item> maxHeap) {
+        
+        // Add to end of array:
+        maxHeap.add(newItem);
+        
+        // Store indices of parent and child nodes:
+        int newNodeIndex = maxHeap.indexOf(newItem);
+        int parentIndex = (newNodeIndex - 1) / 2;
+        
+        if (newNodeIndex >= 0) {
+            Item parentNode = maxHeap.get(parentIndex);
+            while (parentNode.priorityFactor < newItem.priorityFactor) {
+                Collections.swap(maxHeap, parentIndex, newNodeIndex);
+                newNodeIndex = maxHeap.indexOf(newItem);
+                parentIndex = (newNodeIndex - 1) / 2;
+                parentNode = maxHeap.get(parentIndex);
             }
-            ParentSpot = (ParentSpot - 1) / 2;
-
         }
 
-
-        return array;
+        return maxHeap;
     }
 
+    @Override
+    public String toString() {
+        StringBuilder heapString = new StringBuilder();
+        for (Item item : maxHeap) {
+            heapString.append(item + "\n");
+        }
+        return heapString.toString();
+    }
+    
 }
