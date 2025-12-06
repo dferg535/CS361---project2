@@ -5,11 +5,14 @@ import java.util.ArrayList;
 public class Main {
     public static void main(String[] args) {
 
-
+        // Problem 3:
+        MaxBinHeap heap3 = Problem3();
+        printResult(heap3);
+        
     }
 
     //Problem 3: Priority Factor is Value
-    public MaxBinHeap Problem3() {
+    public static MaxBinHeap Problem3() {
 
         ArrayList<Item> itemList = new ArrayList<>();
 
@@ -34,15 +37,15 @@ public class Main {
         itemList.add(item7);
         itemList.add(item8);
         itemList.add(item9);
-
+        
+        // Build and return the max heap:
         MaxBinHeap heap = new MaxBinHeap(itemList);
-        System.out.println(heap);
-
         return heap;
+
     }
 
     //Problem 4: Additive inverse of the weight
-    public MaxBinHeap Problem4() {
+    public static MaxBinHeap Problem4() {
 
         ArrayList<Item> itemList = new ArrayList<>();
 
@@ -67,15 +70,14 @@ public class Main {
         itemList.add(item7);
         itemList.add(item8);
         itemList.add(item9);
-
+        
+        // Build and return the max heap:
         MaxBinHeap heap = new MaxBinHeap(itemList);
-        System.out.println(heap);
-
         return heap;
     }
 
     //Problem 5: value/weight
-    public MaxBinHeap Problem5() {
+    public static MaxBinHeap Problem5() {
 
         ArrayList<Item> itemList = new ArrayList<>();
 
@@ -100,11 +102,38 @@ public class Main {
         itemList.add(item7);
         itemList.add(item8);
         itemList.add(item9);
-
+        
+        // Build and return the max heap:
         MaxBinHeap heap = new MaxBinHeap(itemList);
-        System.out.println(heap);
-
         return heap;
     }
 
+    
+    public static void printResult(MaxBinHeap heap) {
+        
+        // Make a knap sack:
+        ArrayList<Item> knapSack = new ArrayList<>();
+        int weightLimit = 67;
+        int knapSackWeight = 0;
+        
+        // Check max item in heap, add to knapsack if still under weight limit
+        // (check all items)
+        for (int i = 0; i < heap.size(); i++) {
+            Item maxNode = heap.deleteMax();
+            if (knapSackWeight + maxNode.weight <= 67) {
+                knapSackWeight += maxNode.weight;
+                knapSack.add(maxNode);
+            }
+        }
+        
+        System.out.println(heap);
+        System.out.println("\n");
+        System.out.println("Knap sack contents (item ID's):\n");
+        
+        StringBuilder sackString = new StringBuilder("[");
+        for (Item item : knapSack) {
+            sackString.append(item.ID + ", ");
+        }
+        sackString.delete(sackString.length() - 2, sackString.length());
+    }
 }

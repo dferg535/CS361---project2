@@ -76,11 +76,11 @@ public class MaxBinHeap {
             int newIndex = maxHeap.indexOf(item);
             int leftChildIndex = newIndex * 2 + 1;
             int rightChildIndex = newIndex * 2 + 2;
-            if (leftChildIndex <= maxHeap.size()) {
+            if (leftChildIndex < maxHeap.size()) {
                 leftChild = maxHeap.get(leftChildIndex);
             }
             else { leftChild = null; }
-            if (rightChildIndex <= maxHeap.size()) {
+            if (rightChildIndex < maxHeap.size()) {
                 rightChild = maxHeap.get(leftChildIndex);
             }
             else { rightChild = null; }
@@ -89,6 +89,8 @@ public class MaxBinHeap {
         return maxItem;
     }
     
+    
+    public int size(){ return maxHeap.size(); }
     
     @Override
     public String toString() {
