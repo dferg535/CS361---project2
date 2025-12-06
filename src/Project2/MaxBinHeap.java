@@ -8,12 +8,19 @@ public class MaxBinHeap {
     ArrayList<Item> maxHeap;
     
     public MaxBinHeap(ArrayList<Item> itemList) {
-        maxHeap = new ArrayList<>();
-        for (Item item : itemList) {
-            addToHeap(item, maxHeap);
-        }
+        maxHeap = createMaxHeap(itemList);
     }
 
+    
+    public ArrayList<Item> createMaxHeap(ArrayList<Item> itemList) {
+        ArrayList<Item> heap = new ArrayList<>();
+        for (Item item : itemList) {
+            addToHeap(item, heap);
+        }
+        return heap;
+    }
+    
+    
     public ArrayList<Item> addToHeap(Item newItem, ArrayList<Item> maxHeap) {
         
         // Add to end of array:
@@ -36,6 +43,7 @@ public class MaxBinHeap {
         return maxHeap;
     }
 
+    
     @Override
     public String toString() {
         StringBuilder heapString = new StringBuilder();
