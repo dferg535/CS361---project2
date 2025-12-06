@@ -96,8 +96,8 @@ public class MaxBinHeap {
     public String toString() {
         
         // Array string builder:
-        StringBuilder array = new StringBuilder("Array representation (item " +
-                "ID's):\n[");
+        StringBuilder array = new StringBuilder("Heap Built:\n");
+                array.append("Array representation (item " + "ID's):\n[");
         for (Item item: maxHeap) {
             array.append(item.ID + ", ");
         }

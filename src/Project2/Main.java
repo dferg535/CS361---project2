@@ -111,6 +111,10 @@ public class Main {
     
     public static void printResult(MaxBinHeap heap) {
         
+        // Print the heap
+        System.out.println("Problem 3:");
+        System.out.println(heap);
+        
         // Make a knap sack:
         ArrayList<Item> knapSack = new ArrayList<>();
         int weightLimit = 67;
@@ -120,15 +124,14 @@ public class Main {
         // (check all items)
         for (int i = 0; i < heap.size(); i++) {
             Item maxNode = heap.deleteMax();
-            if (knapSackWeight + maxNode.weight <= 67) {
+            if (knapSackWeight + maxNode.weight <=  weightLimit) {
                 knapSackWeight += maxNode.weight;
                 knapSack.add(maxNode);
             }
         }
         
-        System.out.println(heap);
-        System.out.println("\n");
-        System.out.println("Knap sack contents (item ID's):\n");
+        
+        System.out.println("Knap sack contents (item ID's):");
         
         StringBuilder sackString = new StringBuilder("[");
         for (Item item : knapSack) {
