@@ -21,9 +21,12 @@ public class MaxBinHeap {
         }
 
         //Compare to parent
+        System.out.println("I got here");
+        //System.out.println("Array Spot: " + ArraySpot);
 
         int ParentSpot = (ArraySpot - 1) / 2;
-        while(ParentSpot > -1) {
+        System.out.println("ParentSpot is " + ParentSpot);
+        while(ParentSpot >= -1) {
             Item parentNode = array[ParentSpot];
 
             //If the Parent node is less than the Child, we need to swap for max binary heap
