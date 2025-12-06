@@ -42,7 +42,53 @@ public class MaxBinHeap {
 
         return maxHeap;
     }
-
+    
+    
+    public Item deleteMax() {
+        
+        // Store the max node for return:
+        Item maxItem = maxHeap.getFirst();
+        
+        // Swap the first and last node:
+        Collections.swap(maxHeap, 0, maxHeap.indexOf(maxHeap.getLast()));
+        
+        // Remove the last node:
+        maxHeap.removeLast();
+        
+        // Top-down heapify:
+        Item item = maxHeap.getFirst();
+        Item leftChild = null;
+        if (maxHeap.size() > 1) { leftChild = maxHeap.get(1); }
+        Item rightChild = null;
+        if (maxHeap.size() > 2) { rightChild = maxHeap.get(2); }
+        
+        while( (leftChild != null && leftChild.priorityFactor > item.priorityFactor) ||
+                (rightChild != null && rightChild.priorityFactor > item.priorityFactor) ) {
+        
+            Item childToBeSwapped = leftChild;
+            if (rightChild != null && childToBeSwapped.priorityFactor < rightChild.priorityFactor) {
+                childToBeSwapped = rightChild;
+            }
+            
+            Collections.swap(maxHeap, maxHeap.indexOf(item),
+                    maxHeap.indexOf(childToBeSwapped));
+            
+            int newIndex = maxHeap.indexOf(item);
+            int leftChildIndex = newIndex * 2 + 1;
+            int rightChildIndex = newIndex * 2 + 2;
+            if (leftChildIndex <= maxHeap.size()) {
+                leftChild = maxHeap.get(leftChildIndex);
+            }
+            else { leftChild = null; }
+            if (rightChildIndex <= maxHeap.size()) {
+                rightChild = maxHeap.get(leftChildIndex);
+            }
+            else { rightChild = null; }
+        }
+        
+        return maxItem;
+    }
+    
     
     @Override
     public String toString() {
@@ -52,5 +98,7 @@ public class MaxBinHeap {
         }
         return heapString.toString();
     }
+    
+    
     
 }
