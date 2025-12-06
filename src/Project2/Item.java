@@ -18,4 +18,13 @@ public class Item {
         this.priorityFactor = priorityFactor;
     }
     
+    
+    @Override
+    public String toString() {
+        StringBuilder itemString = new StringBuilder("[");
+        itemString.append("Item " + ID + ": ");
+        itemString.append("weight = " + weight + ", ");
+        itemString.append("value = " + value + "] ");
+        return itemString.toString();
+    }
 }
