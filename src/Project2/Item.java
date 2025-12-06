@@ -22,9 +22,9 @@ public class Item {
     @Override
     public String toString() {
         StringBuilder itemString = new StringBuilder("[");
-        itemString.append("Item " + ID + ": ");
-        itemString.append("weight = " + weight + ", ");
-        itemString.append("value = " + value + "] ");
+        itemString.append("ID: " + ID + ", (");
+        itemString.append("w=" + weight + ", ");
+        itemString.append("v=" + value + "] ");
         return itemString.toString();
     }
 }
