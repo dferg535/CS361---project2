@@ -1,3 +1,4 @@
+package Project2;
 
 /**
  * An item or element used in the Knapsack Problem. Each item has a ID, weight,
