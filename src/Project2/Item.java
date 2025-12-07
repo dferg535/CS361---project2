@@ -1,7 +1,7 @@
 package Project2;
 
 /**
- * An item or element used in the Knapsack Problem. Each item has a ID, weight,
+ * An item or element used in the Knapsack Problem. Each item has an ID, weight,
  * value, and priority factor.
  */
 public class Item {
@@ -11,6 +11,12 @@ public class Item {
     double value;
     double priorityFactor;
     
+    /**
+     * @param ID item ID
+     * @param weight item weight
+     * @param value item value
+     * @param priorityFactor priority factor (dependent on algorithm used)
+     */
     public Item (int ID, double weight, double value, double priorityFactor) {
         this.ID = ID;
         this.weight = weight;
@@ -19,6 +25,9 @@ public class Item {
     }
     
     
+    /**
+     * @return Detailed string representation of the item
+     */
     @Override
     public String toString() {
         StringBuilder itemString = new StringBuilder("[");
