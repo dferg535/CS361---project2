@@ -34,7 +34,7 @@ public class Item {
         itemString.append("ID: " + ID + ", (");
         itemString.append("w=" + weight + ", ");
         itemString.append("v=" + value + ", ");
-        itemString.append("priority = " + priorityFactor + "]");
+        itemString.append("priority=" + priorityFactor + ")]");
         return itemString.toString();
     }
 }
